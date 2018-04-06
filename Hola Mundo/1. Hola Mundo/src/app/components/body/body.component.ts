@@ -14,6 +14,6 @@ export class BodyComponent {
   }
   mostrar:boolean = false;
 
-  personajes:string[] = ["Spiderman", "Venom", "Octopus"];
+  personajes:string[] = ["Spiderman", "Venom", "Octopus", "Duende Verde"];
 
 }
