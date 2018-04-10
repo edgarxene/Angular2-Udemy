@@ -1,0 +1,43 @@
+<div class="jumbotron">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-4">
+          <div class="inicial row">
+              <h1>{{heroe.nombre | uppercase}}</h1>
+              <div *ngIf="heroe.casa=='DC'">
+                <img align="right" class="card-img-top" src="assets/img/LogoDC.png" alt="Card image cap" style="width: 80px; height: 50px; padding-left: 20px;"/>
+              </div>
+              <div *ngIf="heroe.casa=='Marvel'">
+                <img align="right" class="card-img-top" src="assets/img/LogoMarvel.png" alt="Card image cap" style="width: 120px; height: 40px; padding-left: 20px;"/>
+              </div>
+          </div>
+          <hr>
+          <p>Bio..{{heroe.bio}}</p>
+          <div align="right">
+            <small>Aparición ({{heroe.aparicion | date:'y'}})</small>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <img class="card-img-top" [src]="heroe.img" alt="Card image cap" >
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-2" style="padding-top: 20px;">
+        <a [routerLink]="['/heroes']" class="btn btn-danger" >Regresar</a>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+</div>
+
+</div>
