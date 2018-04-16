@@ -1,3 +1,23 @@
-<p>
-  heroes-found works!
-</p>
+<div class="container">
+  <h1><strong>Busqueda: </strong> <small class="text-muted">{{termino}}</small></h1>
+  <br>
+
+  <div  class="row" *ngIf="heroesFound?.length == 0">
+    <div class="alert alert-danger" role="alert">
+      Resultados no encontrados
+    </div>
+  </div>
+
+  <div class="card-columns">
+    <div class="card animated fadeIn fast" *ngFor="let heroe of heroesFound">
+      <img class="card-img-top" src="{{heroe.img}}" alt="Card image cap" >
+      <div class="card-body">
+        <h5 class="card-title">{{heroe.nombre}} ({{heroe.casa}})</h5>
+        <p class="card-text">{{heroe.bio}}</p>
+        <p class="card-text"><small class="text-muted">Aparición: {{heroe.aparicion}}</small></p>
+        <button (click)="verHeroe(heroe.id)" type="button" name="button" class="btn btn-outline-primary btn-block">Ver más..</button>
+        <!-- <a [routerLink]="['/heroe', i]" class="btn btn-outline-primary">Ver más link...</a> -->
+      </div>
+    </div>
+  </div>
+</div>
