@@ -111,6 +111,16 @@
         <td style="color:red;">capitalizado</td>
         <td>{{nombre2 | capitalizado:false}}</td>
     </tr>
+      <tr>
+        <td>{{nombre}}</td>
+        <td style="color:red;">contrasena:{{activar}}
+          <br>
+          <button
+                  (click)="activar = !activar"
+                  type="button" name="button">Activar/Desactivar</button>
+        </td>
+        <td>{{nombre | contrasena:activar}}</td>
+    </tr>
     </tbody>
   </table>
 
@@ -131,9 +141,9 @@
   <br>
   <hr>
 
-  <h4>Youtube (DOmSeguro)</h4>
+  <h4>Youtube (DomSeguro)</h4>
   <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" [src]="video | domseguro:'https://www.youtube.com/embed/'"></iframe>
   <br>
   <hr>
-  
+
 </div>
