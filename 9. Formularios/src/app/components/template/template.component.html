@@ -1,0 +1,160 @@
+<h4>Formularios <small>template</small></h4>
+<hr>
+<form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
+
+  <div>
+
+    <div class="form-group row" [ngClass]="{'has-danger': (nombre.errors?.minlength || nombre.errors?.required) && nombre.touched}">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               name="nombre"
+               [(ngModel)]="usuario.nombre"
+               minlength="5"
+               required
+               #nombre="ngModel">
+
+        <div class="form-control-feedback"
+             *ngIf="nombre.errors?.required">
+          Campo obligatorio.
+        </div>
+        <div class="" *ngIf="nombre.errors?.minlength">
+          Por lo menos {{nombre.errors.minlength.requiredLength}} caracteres.
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               [(ngModel)]="usuario.apellido"
+               name="apellido"
+               required
+               #apellido=ngModel>
+
+        <div class="" *ngIf="apellido.errors?.required">
+          Campo obligatorio.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+            [(ngModel)]="usuario.email"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            #email=ngModel>
+
+      <div class="" *ngIf="email.errors?.required">
+        Campo obligatorio.
+      </div>
+      <div class="" *ngIf="email.errors?.pattern">
+        Email invalido.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-8">
+      <select [(ngModel)]="usuario.pais"
+              class="form-control"
+              name="pais">
+              <option value="">Seleccione un pais</option>
+              <option *ngFor="let pais of paises"
+                      [value]="pais.codigo">{{pais.nombre}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Sexo</label>
+    <div class="col-8">
+      <label class="custom-control custom-radio">
+        <input [(ngModel)]="usuario.sexo"
+              name="sexo"
+              value="Hombre"
+              type="radio"
+              class="custom-control-input">
+
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Hombre</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input [(ngModel)]="usuario.sexo"
+              name="sexo"
+              value="Mujer"
+              type="radio"
+              class="custom-control-input">
+
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Mujer</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">SexoDinamico</label>
+    <div class="col-8">
+      <label *ngFor="let s of sexos"
+            class="custom-control custom-radio">
+        <input [(ngModel)]="usuario.sexoDinamico"
+              name="sexoDinamico"
+              [value]="s"
+              type="radio"
+              class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{s}}</span>
+      </label>
+    </div>
+  </div>
+
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Acepta</label>
+      <div class="col-8">
+        <label class="custom-control custom-checkbox">
+          <input [(ngModel)]="usuario.acepta"
+                name="acepta"
+                type="checkbox"
+                required
+                class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Check this custom checkbox</span>
+        </label>
+      </div>
+    </div>
+
+<br><br>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <!--[disabled]="!forma.valid"-->
+      <button [disabled]="!forma.valid"
+        type="submit"
+        class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
+
+<pre>
+{{usuario | json}}
+</pre>
